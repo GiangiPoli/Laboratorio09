@@ -14,8 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-//import java.nio.file.Files;
-//import java.util.List;
+import java.nio.file.Files;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -55,6 +55,8 @@ public class BadIOGUI {
         secondCanvas.setLayout(new BoxLayout(secondCanvas, BoxLayout.X_AXIS));
         canvas.add(secondCanvas, BorderLayout.CENTER);
         secondCanvas.add(write);
+        final JButton read = new JButton("Read from file");
+        secondCanvas.add(read);
         /*
          * Handlers
          */
@@ -75,6 +77,13 @@ public class BadIOGUI {
                     e.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
             }
+        });
+
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("<Read from file> button -> PRESSED");
+            }  
         });
     }
 
