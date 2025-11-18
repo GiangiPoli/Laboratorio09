@@ -12,16 +12,18 @@ public class Controller {
     
     // Class Fields
     private final static String DEFAULT_PATH = System.getProperty("user.home")
-    + File.pathSeparator
+    + System.getProperty("file.separator")
     + "output.txt";
-    private File file;
+    private File file = new File(DEFAULT_PATH);
 
     // Class Constructor
     /**
-     * Using by default output.txt saved in DEFAULT_PATH
+     * Empty Constructor
      */
     public Controller() {
-        this.file = new File(DEFAULT_PATH);
+        /*
+         * Put it just to avoid warnings
+         */
     }
 
     // Class Method
