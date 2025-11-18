@@ -3,7 +3,7 @@ package it.unibo.mvc;
 import java.util.List;
 
 /**
- *
+ * Interface controller.
  */
 public interface Controller {
 
@@ -12,25 +12,26 @@ public interface Controller {
      * 
      * @param next contains the next string to be outputted.
      */
-    public void setNextString(final String next);
+    void setNextString(String next);
 
     /**
      * This method allows you to get the next string to be outputted.
      * 
      * @return the next string to be outputted.
      */
-    public String getNextString(); 
+    String getNextString(); 
     /**
      * This method allows you to write something on std out.
      * 
      * @param output contains what u want to display on std out.
      */
-    public void writeOnStdOut(final String output);
+
+    void writeOnStdOut(String output);
 
     /**
      * This method allows you to get all the previous string outputted.
      * 
      * @return a list of the previous outputted strings.
      */
-    public List<String> getOuputHistory();
+    List<String> getOuputHistory();
 }

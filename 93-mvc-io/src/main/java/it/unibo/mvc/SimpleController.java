@@ -26,7 +26,7 @@ public final class SimpleController implements Controller {
     // Class Method
 
     /**
-     * @{inheritDoc}.
+     * Set the next String.
      */
     @Override
     public void setNextString(final String next) {
@@ -34,7 +34,7 @@ public final class SimpleController implements Controller {
     }
 
     /**
-     * @{inheritDoc}.
+     * Get the next String.
      */
     @Override
     public String getNextString() {
@@ -42,7 +42,7 @@ public final class SimpleController implements Controller {
     }
 
     /**
-     * @{inheritDoc}.
+     * Output the next String.
      */ 
     @Override
     public void writeOnStdOut(final String output) {
@@ -50,20 +50,22 @@ public final class SimpleController implements Controller {
             if (output.isBlank() || output.isEmpty()) {
                 throw new IllegalStateException("String Content Unset");
             }
-            System.out.println(this.nextToBeOutput); //NOPMD
+            System.out.println(this.nextToBeOutput); // NOPMD
             previousOutput.add(this.nextToBeOutput);
-        } catch (final IllegalStateException e) {
-            System.out.println("EXCEPTION GENERATED -> " + e.getMessage()); //NOPMD
+        } catch (final IllegalStateException ignore) { // NOPMD
+            System.out.println("EXCEPTION GENERATED -> " + ignore.getMessage()); //NOPMD
         }
 
     }
 
     /**
-     * @{inheritDoc}.
+     * Output the hostory.
      */
     @Override
     public List<String> getOuputHistory() {
-        return this.previousOutput;
+        final List<String> res = new LinkedList<>();
+        res.addAll(this.previousOutput);
+        return res;
     }
-    
+
 }

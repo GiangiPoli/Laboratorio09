@@ -9,10 +9,12 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 /**
  * A very simple program using a graphical interface.
  *
  */
+
 public final class SimpleGUI {
 
     // Class Fields
@@ -45,16 +47,16 @@ public final class SimpleGUI {
 
         print.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 controller.setNextString(textField.getText());
                 controller.writeOnStdOut(controller.getNextString());
                 textField.setText("");
-            }            
+            }
         });
 
         showHisotry.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 textArea.setText(controller.getOuputHistory().toString());
             } 
         });
@@ -75,7 +77,7 @@ public final class SimpleGUI {
      * 
      * @param args passed through CLI.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         new SimpleGUI().display();
     }
 
