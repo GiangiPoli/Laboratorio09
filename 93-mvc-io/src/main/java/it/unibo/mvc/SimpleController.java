@@ -29,7 +29,7 @@ public final class SimpleController implements Controller {
      * @{inheritDoc}.
      */
     @Override
-    public void setNextString(String next) {
+    public void setNextString(final String next) {
         this.nextToBeOutput = next;
     }
 
@@ -45,9 +45,17 @@ public final class SimpleController implements Controller {
      * @{inheritDoc}.
      */ 
     @Override
-    public void writeOnStdOut(String output) {
-        System.out.println(this.nextToBeOutput); //NOPMD
-        previousOutput.add(this.nextToBeOutput);
+    public void writeOnStdOut(final String output) {
+        try {
+            if (output.isBlank() || output.isEmpty()) {
+                throw new IllegalStateException("String Content Unset");
+            }
+            System.out.println(this.nextToBeOutput); //NOPMD
+            previousOutput.add(this.nextToBeOutput);
+        } catch (final IllegalStateException e) {
+            System.out.println("EXCEPTION GENERATED -> " + e.getMessage()); //NOPMD
+        }
+
     }
 
     /**
