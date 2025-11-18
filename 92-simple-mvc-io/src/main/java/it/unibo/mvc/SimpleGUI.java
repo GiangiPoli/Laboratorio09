@@ -16,10 +16,14 @@ import javax.swing.JTextArea;
 public final class SimpleGUI {
 
     // Class Fields
-    private final JFrame frame = new JFrame("My First Graphical Interface");
+    private static final String FRAME_TITLE = "My first graphical interface";
+    private final JFrame frame = new JFrame(FRAME_TITLE);
     private final Controller controller = new Controller(); 
 
     // Class Constructor
+    /**
+     * Constructor to implement the GUI.
+     */
     public SimpleGUI() {
         final JPanel panel = new JPanel(new BorderLayout());
         final JTextArea text = new JTextArea();
@@ -32,7 +36,7 @@ public final class SimpleGUI {
         save.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 final String textToSave = text.getText();
                 controller.writeOnFile(textToSave); 
                 text.setText("");
@@ -42,12 +46,20 @@ public final class SimpleGUI {
     }
 
     // Class Method
+    /**
+     * Method to manage the disply funciotn.
+     */
     private void display() {
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    /**
+     * Launch the GUI.
+     * 
+     * @param args for arguments passed through CLI.
+     */
+    public static void main(final String[] args) {
         new SimpleGUI().display();
     }
 }
